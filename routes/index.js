@@ -1,2 +1,3 @@
 const todos = require('./todos');
-module.exports = [].concat(todos);
+const clientes = require('./clientes')
+module.exports = [].concat(todos).concat(clientes);

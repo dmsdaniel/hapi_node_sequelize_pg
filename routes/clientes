@@ -1,0 +1,75 @@
+const Models = require('../models/index')
+
+const clienteHandler = async (request, h) => {
+    try {
+        const cliente = await Models.Cliente.findAll({})
+        return { data: cliente }
+    } catch (error) {
+        return h.response({ error: error.message }).code(400)
+    }
+}
+
+const createClienteHandler = async (request, h) => {
+    try {
+        const { nome, email, celular } = request.payload;
+        const cliente = await Models.Cliente.create({
+            nome: nome,
+            email: email,
+            celular: celular
+        })
+        return {
+            data: cliente,
+            message: 'New cliente has been created.'
+        }
+    } catch (error) {
+        return h.response({
+            error: error.message
+        }).code(400)
+    }
+}
+
+const updateClienteHandler = async (request, h) => {
+    try {
+        const todo_id = request.params.id;
+        const { title, description } = request.payload;
+        const cliente = await Models.Cliente.update({
+            title: title,
+            description: description
+        }, {
+                where: {
+                    id: todo_id
+                }
+            })
+        return {
+            message: 'Cliente has been updated.'
+        }
+
+    } catch (error) {
+        return h.response({
+            error: error.message
+        }).code(400)
+    }
+}
+
+const deleteClienteHandler = async (request, h) => {
+    try {
+        const todo_id = request.params.id;
+        await Models.Cliente.destroy({
+            where: {
+                id: todo_id
+            }
+        })
+        return { message: 'Cliente has been deleted.' }
+    } catch (error) {
+        return h.response({
+            error: error.message
+        }).code(400)
+    }
+}
+
+module.exports = [
+    { method: 'GET', path: '/cliente', handler: clienteHandler },
+    { method: 'POST', path: '/cliente', handler: createClienteHandler },
+    { method: 'PUT', path: '/cliente/{id}', handler: updateClienteHandler },
+    { method: 'DELETE', path: '/cliente/{id}', handler: deleteClienteHandler }
+];
