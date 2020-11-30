@@ -1,0 +1,1 @@
+# hapi_node_sequelize_pg
