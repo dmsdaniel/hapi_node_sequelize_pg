@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Postgresql2020!",
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "port": "15432",
+    "dialect": "postgresql"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Postgresql2020!",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "port": "15432",
+    "dialect": "postgresql"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Postgresql2020!",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "port": "15432",
+    "dialect": "postgresql"
+  }
+}
