@@ -12,10 +12,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING,
+        allowNull: false,
         validate: {
             isEmail: true
-        }
+        },
+        type: Sequelize.STRING
       },
       celular: {
           type: Sequelize.STRING
